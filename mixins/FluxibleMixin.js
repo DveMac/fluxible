@@ -131,6 +131,9 @@ var FluxibleMixin = {
      */
     getHandler: function (handler) {
         if ('string' === typeof handler) {
+            if (!this.hasOwnProperty(handler)) {
+                throw new Error((this.constructor.displayName || 'React') + " class is missing handler for " + handler);
+            }
             handler = this[handler];
         }
 
